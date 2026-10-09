@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Suppliers | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/suppliers.css"
+    >
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-menu">
+            <a href="dashboard.html">
+                <span class="icon">▣</span>
+                Dashboard
+            </a>
+
+            <a href="beverages.html">
+                <span class="icon">🥤</span>
+                Beverages
+            </a>
+
+            <a href="categories.html">
+                <span class="icon">▦</span>
+                Categories
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="suppliers.html" class="active">
+                <span class="icon">🚚</span>
+                Suppliers
+            </a>
+
+            <a href="inventory.html">
+                <span class="icon">📦</span>
+                Inventory
+            </a>
+
+            <a href="purchases.html">
+                <span class="icon">🛒</span>
+                Purchases
+            </a>
+
+            <a href="sales.html">
+                <span class="icon">💰</span>
+                Sales
+            </a>
+
+            <a href="reports.html">
+                <span class="icon">📊</span>
+                Reports
+            </a>
+
+            <!-- <a href="change-password.html">
+                <span class="icon">🔐</span>
+                Change Password
+            </a>
+
+
+            <a
+                href="#"
+                data-logout
+            >
+                Logout
+            </a> -->
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Suppliers
+                </h1>
+
+                <p class="subtitle">
+                    Manage beverage suppliers and supplier
+                    information.
+                </p>
+
+            </div>
+
+
+            <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+        </header>
+
+
+
+        <!-- =================================================
+             SUPPLIER FORM
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Add / Edit Supplier
+                    </h2>
+
+                    <p>
+                        Enter supplier information below.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="supplierform"
+                class="form-grid"
+            >
+
+
+                <!-- Hidden ID -->
+
+                <input
+                    type="hidden"
+                    id="supplier_id"
+                    name="supplier_id"
+                >
+
+
+                <!-- Supplier Name -->
+
+                <div class="form-group">
+
+                    <label for="supplier_name">
+                        Supplier
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplier_name"
+                        name="supplier_name"
+                        placeholder="Enter supplier name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Contact Person -->
+
+                <div class="form-group">
+
+                    <label for="contact_person">
+                        Contact Person
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contact_person"
+                        name="contact_person"
+                        placeholder="Enter contact person"
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter email address"
+                    >
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="form-group form-group-full">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        placeholder="Enter supplier address"
+                    >
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        id="saveSupplierBtn"
+                        class="btn btn-primary"
+                    >
+                        Save Supplier
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelBtn"
+                        onclick="resetForm()"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUPPLIER LIST
+        ================================================== -->
+
+        <section
+            class="panel supplier-list-panel"
+        >
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Supplier List
+                    </h2>
+
+                    <p>
+                        All registered beverage suppliers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Contact
+                            </th>
+
+                            <th>
+                                Phone
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Address
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="rows">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-row"
+                            >
+                                Loading suppliers...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script src="js/auth.js"></script>
+    <script src="js/suppliers.js"></script>
+
+</body>
+
+</html>

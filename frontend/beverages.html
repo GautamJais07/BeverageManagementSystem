@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beverages - Beverage Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span class="icon">▣</span>
+                Dashboard
+            </a>
+
+            <a href="beverages.html" class="active">
+                <span class="icon">🥤</span>
+                Beverages
+            </a>
+
+            <a href="categories.html">
+                <span class="icon">▦</span>
+                Categories
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="suppliers.html">
+                <span class="icon">🚚</span>
+                Suppliers
+            </a>
+
+            <a href="inventory.html">
+                <span class="icon">📦</span>
+                Inventory
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="purchases.html">
+                <span class="icon">🛒</span>
+                Purchases
+            </a>
+
+            <a href="sales.html">
+                <span class="icon">💰</span>
+                Sales
+            </a>
+
+            <a href="reports.html">
+                <span class="icon">📊</span>
+                Reports
+            </a>
+
+            <!-- <a href="change-password.html">
+                <span class="icon">🔐</span>
+                Change Password
+            </a> -->
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Beverages</h1>
+                <p>Manage all beverages in the system</p>
+            </div>
+
+            <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+                    <h2>Beverage Management</h2>
+                    <p>Add, edit, search and delete beverages.</p>
+                </div>
+
+                <button
+                    class="btn btn-primary"
+                    type="button"
+                    onclick="showBeverageForm()">
+                    + Add Beverage
+                </button>
+
+            </div>
+
+
+            <!-- ================= SEARCH ================= -->
+            <div class="panel search-panel">
+
+                <div class="search-box">
+
+                    <label for="search">
+                        Search Beverage
+                    </label>
+
+                    <div class="search-input-group">
+
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="Search name, brand or category">
+
+                        <button
+                            class="btn btn-primary"
+                            type="button"
+                            onclick="load()">
+                            Search
+                        </button>
+
+                        <button
+                            class="btn btn-secondary"
+                            type="button"
+                            onclick="clearSearch()">
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FORM ================= -->
+            <div
+                class="panel beverage-form-panel"
+                id="beverageFormPanel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3 id="formTitle">
+                            Add New Beverage
+                        </h3>
+
+                        <p>
+                            Enter the beverage information below.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="close-btn"
+                        onclick="hideBeverageForm()">
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form id="f">
+
+                    <!-- Used when editing -->
+                    <input
+                        type="hidden"
+                        id="id">
+
+
+                    <div class="form-grid">
+
+                        <!-- NAME -->
+                        <div class="form-group">
+
+                            <label for="beverage_name">
+                                Beverage Name
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="beverage_name"
+                                placeholder="Enter beverage name"
+                                required>
+
+                        </div>
+
+
+                        <!-- BRAND -->
+                        <div class="form-group">
+
+                            <label for="brand">
+                                Brand
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="brand"
+                                placeholder="Enter brand name"
+                                required>
+
+                        </div>
+
+
+                        <!-- CATEGORY -->
+                        <div class="form-group">
+
+                            <label for="category">
+                                Category
+                                <span>*</span>
+                            </label>
+
+                            <select
+                                id="category"
+                                required>
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PRICE -->
+                        <div class="form-group">
+
+                            <label for="unit_price">
+                                Unit Price
+                                <span>*</span>
+                            </label>
+
+                            <div class="price-input">
+
+                                <span>Rs.</span>
+
+                                <input
+                                    type="number"
+                                    id="unit_price"
+                                    step="0.01"
+                                    min="0"
+                                    placeholder="0.00"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM BUTTONS -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+                            Save Beverage
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            onclick="resetForm()">
+                            Reset
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-cancel"
+                            onclick="hideBeverageForm()">
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= BEVERAGE TABLE ================= -->
+            <div class="panel table-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Beverage List</h3>
+                        <p>
+                            All beverages registered in the system.
+                        </p>
+                    </div>
+
+                    <div class="record-count">
+                        Total: <strong id="recordCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Category</th>
+                                <th>Unit Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="rows">
+
+                            <!--
+                                Beverage records will be loaded
+                                here using beverages.js
+                            -->
+
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    Loading beverages...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/auth.js"></script>
+    <script src="js/beverages.js"></script>
+
+
+    <script>
+
+        /*
+         * Display beverage form
+         */
+        function showBeverageForm() {
+
+            document.getElementById(
+                "beverageFormPanel"
+            ).classList.add("show");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /*
+         * Hide beverage form
+         */
+        function hideBeverageForm() {
+
+            document.getElementById(
+                "beverageFormPanel"
+            ).classList.remove("show");
+
+        }
+
+
+        /*
+         * Clear search
+         */
+        function clearSearch() {
+
+            document.getElementById("search").value = "";
+
+            if (typeof load === "function") {
+                load();
+            }
+
+        }
+
+
+        /*
+         * Reset form
+         */
+        function resetForm() {
+
+            const form = document.getElementById("f");
+
+            if (form) {
+                form.reset();
+            }
+
+            document.getElementById("id").value = "";
+
+            document.getElementById(
+                "formTitle"
+            ).textContent = "Add New Beverage";
+
+        }
+
+
+        /*
+         * Load form when page opens
+         */
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const formPanel =
+                    document.getElementById(
+                        "beverageFormPanel"
+                    );
+
+                if (formPanel) {
+                    formPanel.classList.remove("show");
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

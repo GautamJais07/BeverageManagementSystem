@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Sales | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/sales.css"
+    >
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span class="icon">▣</span>
+                Dashboard
+            </a>
+
+            <a href="beverages.html">
+                <span class="icon">🥤</span>
+                Beverages
+            </a>
+
+            <a href="categories.html">
+                <span class="icon">▦</span>
+                Categories
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="suppliers.html">
+                <span class="icon">🚚</span>
+                Suppliers
+            </a>
+
+            <a href="inventory.html">
+                <span class="icon">📦</span>
+                Inventory
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="purchases.html">
+                <span class="icon">🛒</span>
+                Purchases
+            </a>
+
+            <a href="sales.html"  class="active">
+                <span class="icon">💰</span>
+                Sales
+            </a>
+
+            <a href="reports.html">
+                <span class="icon">📊</span>
+                Reports
+            </a>
+
+            <!-- <a href="change-password.html">
+                <span class="icon">🔐</span>
+                Change Password
+            </a>
+
+            <a
+                href="#"
+                data-logout
+            >
+                Logout
+            </a> -->
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Sales
+                </h1>
+
+                <p class="subtitle">
+                    Create sales, generate bills and view
+                    sales history.
+                </p>
+
+            </div>
+
+
+            <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CREATE SALE
+        ================================================== -->
+
+        <section class="panel sale-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Create Sale
+                    </h2>
+
+                    <p>
+                        Add beverages and select a payment method.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div class="form-group">
+
+                <label for="customer_name">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customer_name"
+                    name="customer_name"
+                    placeholder="Enter customer name"
+                    maxlength="100"
+                    autocomplete="off"
+                >
+                <small id="customerNameError" class="error-message"></small>
+
+                <label for="payment">
+                    Payment Method
+                </label>
+
+
+                <select
+                    id="payment"
+                    name="payment"
+                >
+
+                    <option value="CASH">
+                        Cash
+                    </option>
+
+                    
+                    <option value="CARD">
+                        Card
+                    </option>
+
+                    <option value="ONLINE">
+                        Online
+                    </option>
+
+                </select>
+
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BEVERAGE SALE LINES
+
+                 sales.js will add beverage rows here.
+            ================================================== -->
+
+            <div
+                id="lines"
+                class="sale-lines"
+            >
+
+            </div>
+            <!-- RUNNING TOTAL -->
+            <div class="sale-total">
+                <strong>Total: <span id="grandTotal">0.00</span></strong>
+            </div>
+
+
+
+            <!-- ADD BEVERAGE -->
+
+            <div class="sale-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="addLine()"
+                >
+                    + Add Beverage
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="saveSale()"
+                >
+                    Save Sale & Generate Bill
+                </button>
+
+                <button type="button" id="printBillBtn" class="btn btn-secondary"
+                     onclick="printBill()" disabled
+                     title="Save a sale first to generate a bill you can print">
+                     🖨️ Print Bill
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SALES HISTORY
+        ================================================== -->
+
+        <section class="panel history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Sales History
+                    </h2>
+
+                    <p>
+                        Previously completed sales.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Payment
+                            </th>
+
+                            <th>
+                                User
+                            </th>
+
+                            <th>
+                                Bill
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="history">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="empty-row"
+                            >
+                                Loading sales history...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="history-footer">
+                <span id="historyStatus"></span>
+
+                <button
+                    type="button"
+                    id="toggleHistoryBtn"
+                    class="btn btn-secondary"
+                    style="display: none;"
+                    onclick="toggleHistoryView()"
+                >
+                    Show More
+                </button>
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BILL
+
+             sales.js will display the generated bill here.
+        ================================================== -->
+
+        <section
+            id="bill"
+            class="panel bill-panel"
+            style="display: none;"
+        >
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/sales.js"></script>
+
+
+</body>
+
+</html>

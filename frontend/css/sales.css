@@ -1,0 +1,1014 @@
+/* =========================================================
+   SALES PAGE
+   Beverage Management System
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f7fa;
+
+    color: #1f2937;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 245px;
+
+    height: 100vh;
+
+    background: #1f2937;
+
+    color: #ffffff;
+
+    overflow-y: auto;
+
+}
+
+
+.sidebar-header {
+
+    padding: 25px 20px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+}
+
+
+.sidebar-header h2 {
+
+    font-size: 26px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.sidebar-header p {
+
+    color: #b8c0cc;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+
+    padding: 15px 10px;
+
+}
+
+
+.sidebar-nav a {
+
+    display: block;
+
+    padding: 12px 15px;
+
+    margin-bottom: 4px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.sidebar-nav a:hover {
+
+    background: #374151;
+
+    color: #ffffff;
+
+}
+
+
+/* ACTIVE SALES PAGE */
+
+.sidebar-nav a.active {
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+
+    margin-left: 245px;
+
+    min-height: 100vh;
+
+    padding: 25px 30px;
+
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+}
+
+
+.topbar h1 {
+
+    font-size: 27px;
+
+    color: #1f2937;
+
+}
+
+
+.subtitle {
+
+    margin-top: 5px;
+
+    color: #7a8494;
+
+    font-size: 13px;
+
+}
+
+
+.user-area {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.user-area span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #e1e5eb;
+
+    border-radius: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel {
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #e2e6ec;
+
+    border-radius: 9px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.03);
+
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+
+    margin-bottom: 20px;
+
+    padding-bottom: 15px;
+
+    border-bottom:
+        1px solid
+        #edf0f4;
+
+}
+
+
+.panel-header h2 {
+
+    font-size: 19px;
+
+    color: #1f2937;
+
+}
+
+
+.panel-header p {
+
+    margin-top: 5px;
+
+    color: #7a8494;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+
+    width: 300px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.form-group select {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid
+        #d5dae3;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.form-group select:focus {
+
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(47, 111, 237, 0.10);
+
+}
+
+
+/* =========================================================
+   SALE LINES
+========================================================= */
+
+.sale-lines {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+}
+
+
+/*
+   These styles also work with dynamically
+   generated beverage rows from sales.js.
+*/
+
+.sale-line {
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        auto;
+
+    gap: 10px;
+
+    align-items: end;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    background: #f8fafc;
+
+    border:
+        1px solid
+        #e2e6ec;
+
+    border-radius: 8px;
+
+}
+
+
+.sale-line label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #4b5563;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.sale-line select,
+.sale-line input {
+
+    width: 100%;
+
+    height: 40px;
+
+    padding: 0 10px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #d5dae3;
+
+    border-radius: 6px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+.sale-line select:focus,
+.sale-line input:focus {
+
+    border-color: #2f6fed;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.sale-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.btn {
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+
+}
+
+
+.btn:active {
+
+    transform: translateY(1px);
+
+}
+
+
+/* PRIMARY */
+
+.btn-primary {
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+}
+
+
+.btn-primary:hover {
+
+    background: #245dcc;
+
+}
+
+
+/* SECONDARY */
+
+.btn-secondary {
+
+    background: #eef1f5;
+
+    color: #374151;
+
+}
+
+
+.btn-secondary:hover {
+
+    background: #e1e5eb;
+
+}
+
+
+/* =========================================================
+   HISTORY PANEL
+========================================================= */
+
+.history-panel {
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.table-container {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 700px;
+
+}
+
+
+.table th {
+
+    padding: 13px 14px;
+
+    background: #f6f8fb;
+
+    border-bottom:
+        1px solid
+        #dfe4eb;
+
+    color: #4b5563;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+}
+
+
+.table td {
+
+    padding: 13px 14px;
+
+    border-bottom:
+        1px solid
+        #edf0f4;
+
+    color: #374151;
+
+    font-size: 13px;
+
+}
+
+
+.table tbody tr:hover {
+
+    background: #fafbfd;
+
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+.empty-row {
+
+    padding: 35px !important;
+
+    text-align: center !important;
+
+    color: #8a93a1 !important;
+
+}
+
+
+/* =========================================================
+   BILL PANEL
+========================================================= */
+
+.bill-panel {
+
+    margin-top: 20px;
+
+}
+
+
+.bill-panel h2 {
+
+    margin-bottom: 15px;
+
+    color: #1f2937;
+
+}
+
+
+.bill-panel h3 {
+
+    margin-bottom: 10px;
+
+    color: #374151;
+
+}
+
+
+.bill-panel p {
+
+    margin-bottom: 7px;
+
+    color: #4b5563;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   BILL TABLE
+========================================================= */
+
+.bill-panel table {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    border-collapse: collapse;
+
+}
+
+
+.bill-panel th,
+.bill-panel td {
+
+    padding: 10px;
+
+    border-bottom:
+        1px solid
+        #e5e7eb;
+
+    text-align: left;
+
+    font-size: 13px;
+
+}
+
+
+.bill-panel th {
+
+    background: #f6f8fb;
+
+    color: #374151;
+
+}
+
+
+/* =========================================================
+   REMOVE BUTTON
+========================================================= */
+
+.remove-line {
+
+    height: 40px;
+
+    padding: 0 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #f1f3f5;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+}
+
+
+.remove-line:hover {
+
+    background: #e5e7eb;
+
+    color: #374151;
+
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.sale-total {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        #e5e7eb;
+
+}
+
+
+.sale-total .label {
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+}
+
+
+.sale-total .amount {
+
+    color: #1f2937;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+
+        width: 210px;
+
+    }
+
+
+    .main {
+
+        margin-left: 210px;
+
+        padding: 20px;
+
+    }
+
+
+    .sale-line {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+
+    .main {
+
+        margin-left: 0;
+
+        padding: 15px;
+
+    }
+
+
+    .topbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .form-group {
+
+        width: 100%;
+
+    }
+
+
+    .sale-line {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sale-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+    }
+
+}
+
+/* =========================================================
+   PRINT BILL ONLY
+   When printBill() runs, it adds "printing-bill" to <body>.
+   These rules hide everything on the page EXCEPT the bill
+   panel while printing, then afterprint removes the class
+   again so the normal page comes back.
+========================================================= */
+
+@media print {
+
+    body.printing-bill * {
+        visibility: hidden;
+    }
+
+    body.printing-bill #bill,
+    body.printing-bill #bill * {
+        visibility: visible;
+    }
+
+    body.printing-bill #bill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Never print the "Print Bill" button itself */
+    body.printing-bill .no-print {
+        display: none !important;
+    }
+
+}
+
+/* =========================================================
+   CUSTOMER NAME
+========================================================= */
+
+.customer-name-group {
+
+    width: 100%;
+    max-width: 500px;
+
+}
+
+
+.customer-name-group input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid
+        #d5dae3;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.customer-name-group input:focus {
+
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(47, 111, 237, 0.10);
+
+}
+
+
+.required {
+
+    color: #dc2626;
+
+}
+
+
+.field-error {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #dc2626;
+
+    font-size: 12px;
+
+}
+
+.history-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.history-footer span {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

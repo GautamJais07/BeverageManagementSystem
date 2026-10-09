@@ -1,0 +1,755 @@
+/* =========================================================
+   SUPPLIERS PAGE
+   Beverage Management System
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f7fa;
+
+    color: #1f2937;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 245px;
+
+    height: 100vh;
+
+    background: #1f2937;
+
+    color: #ffffff;
+
+    overflow-y: auto;
+
+}
+
+
+.sidebar-header {
+
+    padding: 25px 20px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+}
+
+
+.sidebar-header h2 {
+
+    font-size: 26px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.sidebar-header p {
+
+    color: #b8c0cc;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+
+    padding: 15px 10px;
+
+}
+
+
+.sidebar-nav a {
+
+    display: block;
+
+    padding: 12px 15px;
+
+    margin-bottom: 4px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.sidebar-nav a:hover {
+
+    background: #374151;
+
+    color: #ffffff;
+
+}
+
+
+.sidebar-nav a.active {
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main {
+
+    margin-left: 245px;
+
+    min-height: 100vh;
+
+    padding: 25px 30px;
+
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.topbar h1 {
+
+    font-size: 27px;
+
+    color: #1f2937;
+
+}
+
+
+.subtitle {
+
+    margin-top: 5px;
+
+    color: #7a8494;
+
+    font-size: 13px;
+
+}
+
+
+.user-section {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.user-section {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #e1e5eb;
+
+    border-radius: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel {
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #e2e6ec;
+
+    border-radius: 9px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.03);
+
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+
+    margin-bottom: 20px;
+
+    padding-bottom: 15px;
+
+    border-bottom:
+        1px solid
+        #edf0f4;
+
+}
+
+
+.panel-header h2 {
+
+    font-size: 19px;
+
+    color: #1f2937;
+
+}
+
+
+.panel-header p {
+
+    margin-top: 5px;
+
+    color: #7a8494;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px 20px;
+
+}
+
+
+.form-group {
+
+    width: 100%;
+
+}
+
+
+.form-group-full {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid
+        #d5dae3;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.form-group input::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+.form-group input:focus {
+
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(47, 111, 237, 0.10);
+
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.form-actions {
+
+    grid-column:
+        1 / -1;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    padding-top: 3px;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+
+}
+
+
+.btn:active {
+
+    transform:
+        translateY(1px);
+
+}
+
+
+/* PRIMARY */
+
+.btn-primary {
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+}
+
+
+.btn-primary:hover {
+
+    background: #245dcc;
+
+}
+
+
+/* SECONDARY */
+
+.btn-secondary {
+
+    background: #eef1f5;
+
+    color: #374151;
+
+}
+
+
+.btn-secondary:hover {
+
+    background: #e1e5eb;
+
+}
+
+
+/* =========================================================
+   SUPPLIER LIST
+========================================================= */
+
+.supplier-list-panel {
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.table-container {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table {
+
+    width: 100%;
+
+    min-width: 800px;
+
+    border-collapse: collapse;
+
+}
+
+
+.table th {
+
+    padding: 13px 14px;
+
+    background: #f6f8fb;
+
+    border-bottom:
+        1px solid
+        #dfe4eb;
+
+    color: #4b5563;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+}
+
+
+.table td {
+
+    padding: 13px 14px;
+
+    border-bottom:
+        1px solid
+        #edf0f4;
+
+    color: #374151;
+
+    font-size: 13px;
+
+}
+
+
+.table tbody tr:hover {
+
+    background: #fafbfd;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.table .btn {
+
+    min-height: 34px;
+
+    padding: 0 11px;
+
+    margin-right: 5px;
+
+    font-size: 12px;
+
+}
+
+
+.btn-edit {
+
+    background: #eef1f5;
+
+    color: #374151;
+
+}
+
+
+.btn-edit:hover {
+
+    background: #e1e5eb;
+
+}
+
+
+.btn-delete {
+
+    background: #f1f3f5;
+
+    color: #555e6b;
+
+}
+
+
+.btn-delete:hover {
+
+    background: #e5e7eb;
+
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+.empty-row {
+
+    padding: 35px !important;
+
+    text-align: center !important;
+
+    color: #8a93a1 !important;
+
+}
+
+
+/* =========================================================
+   SUCCESS / ERROR MESSAGES
+========================================================= */
+
+.message {
+
+    margin-bottom: 15px;
+
+    padding: 11px 14px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+}
+
+
+.message-success {
+
+    background: #f0f7f1;
+
+    border:
+        1px solid
+        #d5e8d7;
+
+    color: #37613d;
+
+}
+
+
+.message-error {
+
+    background: #faf1f1;
+
+    border:
+        1px solid
+        #ead8d8;
+
+    color: #704040;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+
+        width: 210px;
+
+    }
+
+
+    .main {
+
+        margin-left: 210px;
+
+        padding: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+
+    .main {
+
+        margin-left: 0;
+
+        padding: 15px;
+
+    }
+
+
+    .topbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-group-full {
+
+        grid-column: auto;
+
+    }
+
+
+    .form-actions {
+
+        grid-column: auto;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .form-actions .btn {
+
+        width: 100%;
+
+    }
+
+}

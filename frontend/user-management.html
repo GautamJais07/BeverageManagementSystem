@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        User Management | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        .user-management-container {
+            padding: 30px;
+        }
+
+        .user-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .user-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .user-table th,
+        .user-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        @media (max-width: 700px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .user-management-container {
+                padding: 15px;
+            }
+
+            .user-table {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="user-management-container">
+
+        <h1 style="text-align: center;">
+            User Management
+        </h1>
+
+        <p style="text-align: center" >
+            Only Admin can create or delete
+            Staff and Manager accounts.
+        </p>
+        <br>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <!-- CREATE USER -->
+
+        <div class="user-form">
+
+            <h2>
+                Create New User
+            </h2>
+
+            <form id="userForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                           <b>Full Name</b>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="full_name"
+                            required
+                            pattern="[A-Za-z]+(?:\s+[A-Za-z]+)*"
+                            title="Name must contain letters only and can include spaces."
+                            autocomplete="name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                           <b>Username</b>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            required
+                            pattern="^[a-zA-Z0-9_]{3,20}$"
+                            title="Username must be 3-20 characters long and can only contain letters, numbers, and underscores."
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                           <b>Email</b>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            required
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                           <b>Role</b>
+                        </label>
+
+                        <select
+                            id="role"
+                            required
+                        >
+
+                            <option value="STAFF">
+                                STAFF
+                            </option>
+
+                            <option value="MANAGER">
+                                MANAGER
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <b>Password</b>
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            required
+                            minlength="8"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                            title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
+                            autocomplete="new-password"
+                        >
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <b>Confirm Password</b>
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            required
+                            minlength="8"
+                            autocomplete="new-password"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="createButton"
+                >
+                    Create User
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- USERS -->
+
+        <div class="user-form">
+
+            <h2>
+                Existing Users
+            </h2>
+
+            <table class="user-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Username
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="usersTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/auth.js"></script>
+    <script src="js/user-management.js"></script>
+
+</body>
+
+</html>

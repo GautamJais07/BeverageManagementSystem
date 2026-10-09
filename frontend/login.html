@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <!-- =====================================================
+         LOGIN CONTAINER
+    ====================================================== -->
+
+    <div class="auth-container">
+
+
+        <!-- =================================================
+             LOGIN CARD
+        ================================================== -->
+
+        <div class="auth-box">
+
+
+            <!-- LOGO / TITLE -->
+
+            <div class="auth-header">
+
+                <div class="auth-logo">
+                   <img src="image/logo.png" alt="BMS Logo">
+                </div>
+
+                <h1>
+                    Beverage Management System
+                </h1>
+
+                <p>
+                    Sign in to your account
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ERROR / SUCCESS MESSAGE
+            ================================================== -->
+
+            <div
+                id="msg"
+                class="auth-message"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+
+
+            <!-- =================================================
+                 LOGIN FORM
+            ================================================== -->
+
+            <form
+                id="loginForm"
+                class="auth-form"
+            >
+
+
+                <!-- USERNAME -->
+
+                <div class="auth-form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="auth-form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary auth-login-btn"
+                    id="loginButton"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 AUTHENTICATION LINKS
+            ================================================== -->
+
+            <div class="auth-footer">
+
+                <p>
+                     Contact the system administrator
+                     if you need an account.
+                </p>
+                <br>
+
+
+                <p>
+
+                    <a href="change-password.html">
+                        Change Password
+                    </a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <p class="auth-footer">
+
+            Beverage Management System
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         AUTHENTICATION JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/login.js"></script>
+
+    <script>
+
+        // Check if the user is already logged in
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'dashboard.html';
+        }

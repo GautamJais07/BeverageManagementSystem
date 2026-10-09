@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- LOGO -->
+
+         <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+
+        <a
+            href="dashboard.html"
+            class="active"
+        >
+
+            <span class="nav-icon">
+                ▣
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+
+        <a href="beverages.html">
+
+            <span class="nav-icon">
+                🥤
+            </span>
+
+            <span>
+                Beverages
+            </span>
+
+        </a>
+
+
+        <a
+            href="categories.html"
+            
+        >
+
+            <span class="nav-icon">
+                ▦
+            </span>
+
+            <span>
+                Categories
+            </span>
+
+        </a>
+
+
+
+        <!-- ADMIN + MANAGER -->
+
+        <a
+            href="suppliers.html"
+            data-role="ADMIN,MANAGER,"
+        >
+
+            <span class="nav-icon">
+                🚚
+            </span>
+
+            <span>
+                Suppliers
+            </span>
+
+        </a>
+
+
+
+        <a href="inventory.html">
+
+            <span class="nav-icon">
+                📦
+            </span>
+
+            <span>
+                Inventory
+            </span>
+
+        </a>
+
+
+
+        <!-- ADMIN ONLY -->
+
+        <a
+            href="purchases.html"
+            data-role="ADMIN,MANAGER"
+        >
+
+            <span class="nav-icon">
+                🛒
+            </span>
+
+            <span>
+                Purchases
+            </span>
+
+        </a>
+
+
+
+        <a href="sales.html">
+
+            <span class="nav-icon">
+                💰
+            </span>
+
+            <span>
+                Sales
+            </span>
+
+        </a>
+
+
+
+        <a href="reports.html">
+
+            <span class="nav-icon">
+                📊
+            </span>
+
+            <span>
+                Reports
+            </span>
+
+        </a>
+
+
+
+        <a href="change-password.html">
+
+            <span class="nav-icon">
+                🔐
+            </span>
+
+            <span>
+                Change Password
+            </span>
+
+        </a>
+
+        <!-- ADMIN ONLY - USER MANAGEMENT -->
+
+<a
+    href="user-management.html"
+    data-role="ADMIN"
+>
+
+    <span class="nav-icon">
+        👥
+    </span>
+
+    <span>
+        User Management
+    </span>
+
+</a>
+
+        
+
+
+    </nav>
+
+
+
+    <!-- LOGOUT -->
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="#"
+            data-logout
+            class="logout-link"
+        >
+
+            <span class="nav-icon">
+                ↪
+            </span>
+
+            <span>
+               <font color="red">Logout</font>
+            </span>
+
+        </a>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <header class="topbar">
+
+
+        <div class="page-heading">
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Overview of your beverage management system
+            </p>
+
+        </div>
+        
+            <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         DASHBOARD CARDS
+    ================================================== -->
+
+    <section class="card-grid">
+
+
+        <!-- BEVERAGES -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon beverage-icon">
+                🥤
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Beverages
+                </h3>
+
+                <div
+                    class="value"
+                    id="beverages"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Total beverages
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CATEGORIES -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon category-icon">
+                ▦
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Categories
+                </h3>
+
+                <div
+                    class="value"
+                    id="categories"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Beverage categories
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUPPLIERS -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon supplier-icon">
+                🚚
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Suppliers
+                </h3>
+
+                <div
+                    class="value"
+                    id="suppliers"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Registered suppliers
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PURCHASES -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon purchase-icon">
+                🛒
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Purchases
+                </h3>
+
+                <div
+                    class="value"
+                    id="purchases"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Total purchases
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SALES -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon sales-icon">
+                💰
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Sales
+                </h3>
+
+                <div
+                    class="value"
+                    id="sales"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Total sales
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INVENTORY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon inventory-icon">
+                📦
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Current Inventory
+                </h3>
+
+                <div
+                    class="value"
+                    id="inventory"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Available stock
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOW STOCK -->
+
+        <div class="dashboard-card warning-card">
+
+            <div class="card-icon warning-icon">
+                ⚠
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Low Stock
+                </h3>
+
+                <div
+                    class="value"
+                    id="low"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Items requiring attention
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- OUT OF STOCK -->
+
+        <div class="dashboard-card danger-card">
+
+            <div class="card-icon danger-icon">
+                ✕
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+                    Out of Stock
+                </h3>
+
+                <div
+                    class="value"
+                    id="out"
+                >
+                    0
+                </div>
+
+                <span class="card-description">
+                    Unavailable items
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECENT SALES
+    ================================================== -->
+
+    <section class="panel dashboard-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>
+                    Recent Sales
+                </h2>
+
+                <p>
+                    Latest beverage sales
+                </p>
+
+            </div>
+
+
+            <a
+                href="sales.html"
+                class="view-all"
+            >
+                View All
+            </a>
+
+        </div>
+
+
+
+        <div class="table-wrap">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Beverage
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="recentSales">
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="loading-cell"
+                        >
+                            Loading recent sales...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECENT PURCHASES
+    ================================================== -->
+
+    <section class="panel dashboard-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>
+                    Recent Purchases
+                </h2>
+
+                <p>
+                    Latest beverage purchases
+                </p>
+
+            </div>
+
+
+            <a
+                href="purchases.html"
+                class="view-all"
+            >
+                View All
+            </a>
+
+        </div>
+
+
+
+        <div class="table-wrap">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Beverage
+                        </th>
+
+                        <th>
+                            Supplier
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="recentPurchases">
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="loading-cell"
+                        >
+                            Loading recent purchases...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

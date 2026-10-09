@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Reports | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span class="icon">▣</span>
+                Dashboard
+            </a>
+
+            <a href="beverages.html">
+                <span class="icon">🥤</span>
+                Beverages
+            </a>
+
+            <a href="categories.html">
+                <span class="icon">▦</span>
+                Categories
+            </a>
+
+            <a data-role="ADMIN,MANAGER" href="suppliers.html">
+                <span class="icon">🚚</span>
+                Suppliers
+            </a>
+
+            <a href="inventory.html">
+                <span class="icon">📦</span>
+                Inventory
+            </a>
+
+            <a data-role="ADMIN" href="purchases.html">
+                <span class="icon">🛒</span>
+                Purchases
+            </a>
+
+            <a href="sales.html">
+                <span class="icon">💰</span>
+                Sales
+            </a>
+
+            <a href="reports.html"  class="active">
+                <span class="icon">📊</span>
+                Reports
+            </a>
+
+            <!-- <a href="change-password.html">
+                <span class="icon">🔐</span>
+                Change Password
+            </a>
+
+            <a
+                href="#"
+                data-logout
+            >
+                <span>Logout</span>
+            </a> -->
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Reports
+                </h1>
+
+                <p class="page-subtitle">
+                    View sales, purchase and stock reports
+                </p>
+
+            </div>
+
+
+            <div class="user-area">
+
+                 <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             REPORT CONTROLS
+        ================================================== -->
+
+        <section class="panel report-controls">
+
+            <div class="report-filter">
+
+                <label for="period">
+                    Report Period
+                </label>
+
+                <select
+                    id="period"
+                    name="period"
+                >
+
+                    <option value="daily">
+                        Daily
+                    </option>
+
+                    <option value="weekly">
+                        Weekly
+                    </option>
+
+                    <option value="monthly">
+                        Monthly
+                    </option>
+
+                    <option value="yearly">
+                        Yearly
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="report-buttons">
+
+                <button
+                    type="button"
+                    class="btn btn-primary report-tab-btn"
+                    id="btn-sales"
+                    onclick="loadSalesReport()"
+                >
+                    Sales Report
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary report-tab-btn"
+                    id="btn-purchase"
+                    onclick="loadPurchaseReport()"
+                >
+                    Purchase Report
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary report-tab-btn"
+                    id="btn-stock"
+                    onclick="loadStockReport()"
+                >
+                    Stock Report
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             REPORT OUTPUT
+        ================================================== -->
+
+        <section
+            class="panel report-output-panel"
+        >
+
+            <div class="report-header">
+
+                <div>
+
+                    <h2 id="title">
+                        Report
+                    </h2>
+
+                    <p class="report-description">
+                        Select a report type to view the results.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!--
+                reports.js will insert the
+                generated report here.
+            -->
+
+            <div
+                id="output"
+                class="report-output"
+            >
+
+                <div class="empty-report">
+
+                    <div class="empty-report-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        No Report Selected
+                    </h3>
+
+                    <p>
+                        Choose Sales Report, Purchase Report,
+                        or Stock Report above.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/reports.js"></script>
+
+
+</body>
+
+</html>

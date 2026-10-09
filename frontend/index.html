@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Beverage Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <aside class="sidebar">
+
+        <h2>BMS</h2>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a href="beverages.html">
+            Beverages
+        </a>
+
+        <a
+            href="categories.html"
+            data-role="ADMIN"
+        >
+            Categories
+        </a>
+
+        <a
+            href="suppliers.html"
+            data-role="ADMIN,MANAGER"
+        >
+            Suppliers
+        </a>
+
+        <a href="inventory.html">
+            Inventory
+        </a>
+
+        <a
+            href="purchases.html"
+            data-role="ADMIN"
+        >
+            Purchases
+        </a>
+
+        <a href="sales.html">
+            Sales
+        </a>
+
+        <a href="reports.html">
+            Reports
+        </a>
+
+        <a href="change-password.html">
+            Change Password
+        </a>
+
+        <a href="#" data-logout>
+            Logout
+        </a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <h1>Dashboard</h1>
+
+            <span data-user></span>
+
+        </div>
+
+
+        <div class="card-grid">
+
+            <div class="card">
+
+                <h3>Beverages</h3>
+
+                <div
+                    class="value"
+                    id="beverages"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Categories</h3>
+
+                <div
+                    class="value"
+                    id="categories"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Suppliers</h3>
+
+                <div
+                    class="value"
+                    id="suppliers"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Purchases</h3>
+
+                <div
+                    class="value"
+                    id="purchases"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Sales</h3>
+
+                <div
+                    class="value"
+                    id="sales"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Current Inventory</h3>
+
+                <div
+                    class="value"
+                    id="inventory"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Low Stock</h3>
+
+                <div
+                    class="value"
+                    id="low"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Out of Stock</h3>
+
+                <div
+                    class="value"
+                    id="out"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="panel"
+            style="margin-top:20px"
+        >
+
+            <h2>Recent Sales</h2>
+
+            <div class="table-wrap">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentSales">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="panel"
+            style="margin-top:20px"
+        >
+
+            <h2>Recent Purchases</h2>
+
+            <div class="table-wrap">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Total</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentPurchases">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

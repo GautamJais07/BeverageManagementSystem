@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Inventory | Beverage Management System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- LOGO -->
+
+        <div class="logo">
+            <div class="logo-icon">B</div>
+            <div>
+                <h2>BMS</h2>
+                <span>Beverage Management</span>
+            </div>
+        </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-menu">
+
+
+        <a href="dashboard.html">
+
+            <span class="icon">
+                ▣
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+
+        <a href="beverages.html">
+
+            <span class="icon">
+                🥤
+            </span>
+
+            <span>
+                Beverages
+            </span>
+
+        </a>
+
+
+
+        <!-- ADMIN ONLY -->
+
+        <a
+            href="categories.html"
+        >
+
+            <span class="icon">
+                ▦
+            </span>
+
+            <span>
+                Categories
+            </span>
+
+        </a>
+
+
+
+        <!-- ADMIN + MANAGER -->
+
+        <a
+            href="suppliers.html"
+            data-role="ADMIN,MANAGER"
+        >
+
+            <span class="icon">
+                🚚
+            </span>
+
+            <span>
+                Suppliers
+            </span>
+
+        </a>
+
+
+
+        <!-- ACTIVE PAGE -->
+
+        <a
+            href="inventory.html"
+            class="active"
+        >
+
+            <span class="icon">
+                📦
+            </span>
+
+            <span>
+                Inventory
+            </span>
+
+        </a>
+
+
+
+        <!-- ADMIN ONLY -->
+
+        <a
+            href="purchases.html"
+           data-role="ADMIN,MANAGER"
+        >
+
+            <span class="icon">
+                🛒
+            </span>
+
+            <span>
+                Purchases
+            </span>
+
+        </a>
+
+
+
+        <a href="sales.html">
+
+            <span class="icon">
+                💰
+            </span>
+
+            <span>
+                Sales
+            </span>
+
+        </a>
+
+
+
+        <a href="reports.html">
+
+            <span class="icon">
+                📊
+            </span>
+
+            <span>
+                Reports
+            </span>
+
+        </a>
+
+
+
+        <!-- <a href="change-password.html">
+
+            <span class="icon">
+                ⚙
+            </span>
+
+            <span>
+                Change Password
+            </span>
+
+        </a> -->
+
+
+    </nav>
+
+
+
+    <!-- LOGOUT -->
+
+    <!-- <div class="sidebar-bottom">
+
+        <a
+            href="#"
+            data-logout
+            class="logout-link"
+        >
+
+            <span class="icon">
+                ⇥
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+    </div> -->
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <header class="topbar">
+
+
+        <div class="page-heading">
+
+            <h1>
+                Inventory
+            </h1>
+
+            <p>
+                Monitor beverage stock and inventory levels
+            </p>
+
+        </div>
+
+
+
+        <!-- USER -->
+
+        <div class="user-area">
+
+            <div class="user-section">
+
+                <div class="user-avatar" data-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong data-user>User</strong>
+                    <span data-role-display>Staff</span>
+                    <span>Beverage Manager</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         INVENTORY CONTROLS
+    ================================================== -->
+
+    <section class="panel inventory-controls">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>
+                    Inventory Overview
+                </h2>
+
+                <p>
+                    Current stock status of all beverages
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                onclick="load()"
+            >
+
+                <span class="refresh-icon">
+                    ↻
+                </span>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+<!-- =================================================
+     INVENTORY TABLE
+================================================== -->
+
+<section class="panel inventory-table-panel">
+
+    <!-- STOCK LIST HEADER -->
+    <div class="panel-header">
+
+        <div>
+
+            <h2>
+                Stock List
+            </h2>
+
+            <p>
+                Beverage inventory details
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH BAR -->
+    <div class="inventory-search">
+
+        <label
+            for="inventorySearch"
+            class="sr-only"
+        >
+            Search inventory
+        </label>
+
+        <div class="inventory-search-group">
+
+            <input
+                type="search"
+                id="inventorySearch"
+                placeholder="Search beverage, brand or category..."
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                id="inventorySearchButton"
+                class="btn btn-primary"
+            >
+                Search
+            </button>
+
+            <button
+                type="button"
+                id="inventoryClearButton"
+                class="btn btn-secondary"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="table-wrap">
+
+        <table class="table inventory-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Beverage
+                    </th>
+
+                    <th>
+                        Brand
+                    </th>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Stock
+                    </th>
+
+                    <th>
+                        Reorder Level
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="rows">
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="loading-cell"
+                    >
+                        Loading inventory...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="js/auth.js"></script>
+
+<script src="js/inventory.js"></script>
+
+
+</body>
+
+</html>
